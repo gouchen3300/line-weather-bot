@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: line-weather-bot-web
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+
+  - type: worker
+    name: line-weather-bot-worker
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python weather_pusher.py"
+    schedule: "0 23 * * *"
